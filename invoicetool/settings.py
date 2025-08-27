@@ -133,5 +133,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 ALLOWED_HOSTS =  "invoice-app-jjo6.onrender.com", "localhost", "127.0.0.1"
 EMAIL_PORT = config("587", default=587, cast=int)
 EMAIL_USE_TLS = config("EMAIL_USE_TLS", default=True, cast=bool)
-EMAIL_HOST_USER = config("sivapragasan26@gmail.com")
-EMAIL_HOST_PASSWORD = conig("cfotdinhzheexdzm")
+EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
