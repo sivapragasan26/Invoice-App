@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Invoice Software</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'users/style.css' %}">
+</head>
+<body>
+
+    <!-- ✅ Navigation bar with current page highlight -->
+    <nav>
+    <nav>
+    <a href="{% url 'dashboard' %}" {% if request.path == '/' %}style="text-decoration:underline;"{% endif %}>Dashboard</a> |
+    <a href="{% url 'add_client' %}">Add Client</a> |
+    <a href="{% url 'client_list' %}">All Clients</a> |
+    <a href="{% url 'add_item' %}">Add Item</a> |
+    <a href="{% url 'item_list' %}">All Items</a> |
+    <a href="{% url 'add_invoice' %}">Add Invoice</a> |   <!-- Added this -->
+    <a href="{% url 'invoice_list' %}">Invoices</a> |
+    <a href="{% url 'logout' %}">Logout</a>
+</nav>
+
+</nav>
+
+    <hr>
+
+    {% block content %}{% endblock %}
+</body>
+</html>

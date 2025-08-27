@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Add Invoice</h2>
+
+<form method="post">
+    {% csrf_token %}
+    
+    <!-- Client dropdown -->
+    <label for="id_client">Select Client:</label>
+    {{ form.client }}
+
+    <!-- Items multi-select -->
+    <label for="id_items">Select Items:</label>
+    {{ form.items }}
+
+    <!-- Due date -->
+    <label for="id_due_date">Due Date:</label>
+    {{ form.due_date }}
+
+    <!-- Paid checkbox -->
+    <label for="id_is_paid">Paid?</label>
+    {{ form.is_paid }}
+
+    <br><br>
+    <button type="submit">Create Invoice</button>
+</form>
+{% endblock %}

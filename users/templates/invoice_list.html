@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>All Invoices</h2>
+
+<form method="GET">
+    <input type="text" name="q" placeholder="Search by client" value="{{ request.GET.q }}">
+    <select name="status">
+        <option value="">All</option>
+        <option value="paid" {% if request.GET.status == 'paid' %}selected{% endif %}>Paid</option>
+        <option value="unpaid" {% if request.GET.status == 'unpaid' %}selected{% endif %}>Unpaid</option>
+    </select>
+    <button type="submit">Search</button>
+</form>
+
+<ul>
+    {% for invoice in invoices %}
+        <li>
+            <a href="{% url 'invoice_detail' invoice.id %}">View</a>
+                Invoice {{ invoice.id }} - {{ invoice.client.name }} - 
+                {% if invoice.is_paid %} Paid {% else %} Unpaid {% endif %}
+            </a>
+            | <a href="{% url 'edit_invoice' invoice.id %}">Edit</a>
+            | <a href="{% url 'delete_invoice' invoice.id %}">Delete</a>
+            <a href="{% url 'send_invoice' invoice.id %}">Send Email</a>
+
+
+        </li>
+    {% empty %}
+        <li>No invoices found.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

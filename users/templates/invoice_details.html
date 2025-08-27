@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Invoice {{ invoice.id }}</h2>
+<p>Client: {{ invoice.client.name }}</p>
+<p>Date: {{ invoice.date_created }}</p>
+<p>Due Date: {{ invoice.due_date }}</p>
+<p>Status: {% if invoice.is_paid %} Paid {% else %} Unpaid {% endif %}</p>
+
+<h3>Items</h3>
+<table border="1" cellspacing="0" cellpadding="5">
+    <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+    </tr>
+    {% for item in items %}
+    <tr>
+        <td>{{ item.item.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.item.price }}</td>
+        <td>{{ item.total_price }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<p><strong>Total Amount: </strong>
+    {{ items|sum(attribute='total_price') }}
+</p>
+
+<a href="{% url 'invoice_pdf' invoice.id %}">Download PDF</a>
+{% endblock %}

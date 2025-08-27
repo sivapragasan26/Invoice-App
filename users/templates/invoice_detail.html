@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Invoice #{{ invoice.id }}</h2>
+
+<h3>Client Details</h3>
+<p>Name: {{ invoice.client.name }}</p>
+<p>Email: {{ invoice.client.email }}</p>
+
+<h3>Invoice Details</h3>
+<p>Created at: {{ invoice.created_at|date:"Y-m-d H:i" }}</p>
+<p>Due date: {{ invoice.due_date|date:"Y-m-d" }}</p>
+<p>Status: {% if invoice.is_paid %} Paid {% else %} Unpaid {% endif %}</p>
+
+<h3>Items</h3>
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in invoice.items.all %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.price }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h3>Total: {{ invoice.items.all|length|add:"0" }}</h3> {# Optional: replace with total if calculated in view #}
+{% endblock %}

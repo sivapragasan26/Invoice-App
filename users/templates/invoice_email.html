@@ -1,0 +1,14 @@
+<h2>Invoice #{{ invoice.id }}</h2>
+<p>Dear {{ invoice.client.name }},</p>
+
+<p>Here is your invoice:</p>
+
+<ul>
+    {% for item in invoice.items.all %}
+        <li>{{ item.name }} - {{ item.price }}</li>
+    {% endfor %}
+</ul>
+
+<p>Total: {{ invoice.items.all|sum:"price" }}</p>
+
+<p>Thank you for your business!</p>
