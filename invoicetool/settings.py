@@ -27,7 +27,7 @@ SECRET_KEY = config('django-invoice-12345')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", default=False, cast=bool)
 
-ALLOWED_HOSTS = ["invoice-app-jjo6.onrender.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = "invoice-app-jjo6.onrender.com", "localhost", "127.0.0.1"
 
 
 # Application definition
@@ -130,7 +130,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Email configuration (using Gmail SMTP)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-ALLOWED_HOSTS =  ["invoice-app-jjo6.onrender.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS =  "invoice-app-jjo6.onrender.com", "localhost", "127.0.0.1"
 EMAIL_PORT = config("587", default=587, cast=int)
 EMAIL_USE_TLS = config("EMAIL_USE_TLS", default=True, cast=bool)
 EMAIL_HOST_USER = config("sivapragasan26@gmail.com")
