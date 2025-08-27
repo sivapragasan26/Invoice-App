@@ -2,6 +2,9 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('users.urls')),   # ✅ should include users.urls, not invoicetool.views
+    path("admin/", admin.site.urls),
+    path("", include("clients.urls")),
+    path("invoices/", include("invoices.urls")),
+    # etc...
 ]
+
