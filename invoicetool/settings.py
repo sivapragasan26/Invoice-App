@@ -28,6 +28,10 @@ SECRET_KEY = config("SECRET_KEY", default="unsafe-secret-key")
 DEBUG = config("DEBUG", default=False, cast=bool)
 
 ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv())
+# Where to go after successful login
+LOGIN_REDIRECT_URL = '/'   # or '/dashboard/' if you have one
+LOGOUT_REDIRECT_URL = '/'  # after logout
+
 
 
 # Application definition
@@ -41,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users',
     'invoices',
+    'clients'
 ]
 
 MIDDLEWARE = [
@@ -135,3 +140,9 @@ EMAIL_PORT = config("EMAIL_PORT", default=587, cast=int)
 EMAIL_USE_TLS = config("EMAIL_USE_TLS", default=True, cast=bool)
 EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default="")
+CSRF_TRUSTED_ORIGINS = [
+    'https://your-app-name.onrender.com'
+]
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
